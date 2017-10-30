@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c41cfd33df130074284ea5024d8862da
+timeCreated: 1496387632
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: coffee+tea demo
+  fontNames:
+  - coffee+tea demo
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
