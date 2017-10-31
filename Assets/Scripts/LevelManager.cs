@@ -47,8 +47,8 @@ public class LevelManager : MonoBehaviour {
         GetComponent<AudioSource>().Play();
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         GameMaster.particleWorld = true;
-        ScoreManager.ResetScore();
-        AmmoManager.ResetAmmo();
+        //ScoreManager.ResetScore();
+        //AmmoManager.ResetAmmo();
         //player.GetComponent<Rigidbody2D>().gravityScale = gravityStore;
         //player.enabled = true;
         //player.transform.localScale = new Vector3(1f, 1f, 1f);

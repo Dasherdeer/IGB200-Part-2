@@ -9,7 +9,6 @@ public class Tutorial : MonoBehaviour {
     public float letterPause = 0.007f;
     string message;
     Text textComp;
-    private bool tutorialStepComplete = false;
     int textNumber;
     int letterNumber;
     int finalNumber;
