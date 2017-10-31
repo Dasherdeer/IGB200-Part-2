@@ -33,37 +33,18 @@ public class GameMaster : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if (Input.GetKeyDown(KeyCode.C)||Input.GetKey(KeyCode.Period)) {
+        if (Input.GetKeyDown(KeyCode.C)||Input.GetKey(KeyCode.Period)|| EnergyManager.GetComponent<EnergyManager>().getEnergy() <= 0f) {
             AudioSource.PlayClipAtPoint(SwitchWorlds, GameObject.FindGameObjectWithTag("Player").transform.position);
             particleWorld = !particleWorld;
-            foreach (GameObject pink in pinkClouds)
-            {
-                if (pink)
-                {
-                    pink.GetComponent<SpriteRenderer>().enabled = !pink.GetComponent<SpriteRenderer>().enabled;
-
-                    pink.GetComponent<PolygonCollider2D>().enabled = !pink.GetComponent<PolygonCollider2D>().enabled;
-                }
-            }
-        }
-
-        if (EnergyManager.GetComponent<EnergyManager>().getEnergy() <= 0f)
-        {
-            AudioSource.PlayClipAtPoint(SwitchWorlds, GameObject.FindGameObjectWithTag("Player").transform.position);
-            foreach (GameObject pink in pinkClouds)
-            {
-                if (pink)
-                {
-                    SpriteRenderer pinkRend = pink.GetComponent<SpriteRenderer>();
-                    pinkRend.enabled = !pinkRend.enabled;
-
-                    PolygonCollider2D pinkPoly = pink.GetComponent<PolygonCollider2D>();
-                    pinkPoly.enabled = !pinkPoly.enabled;
-                }
-            }
         }
 
         if (particleWorld) {
+            foreach (GameObject pink in pinkClouds)
+            {
+                    pink.GetComponent<SpriteRenderer>().enabled = false;
+
+                    pink.GetComponent<PolygonCollider2D>().enabled = false;
+            }
             foreach (GameObject ammo in ammos) {
                 if (ammo) {
                     ammo.SetActive(false);
@@ -84,7 +65,14 @@ public class GameMaster : MonoBehaviour {
             stunIndicatorPlayer.SetActive(false); 
             img.enabled = false;
 
-        } else {
+        } else
+        {
+            foreach (GameObject pink in pinkClouds)
+            {
+                pink.GetComponent<SpriteRenderer>().enabled = true;
+
+                pink.GetComponent<PolygonCollider2D>().enabled = true;
+            }
             foreach (GameObject ammo in ammos) {
                 if (ammo) {
                     ammo.SetActive(true);

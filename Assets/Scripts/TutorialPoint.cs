@@ -16,12 +16,13 @@ public class TutorialPoint : MonoBehaviour {
 		
 	}
 
+    //Runs next line of tutorial code when the player triggers it, then disables itself
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.name == "Player")
         {
             tutorial.ClearText();
+            gameObject.SetActive(false);
         }
-        Destroy(gameObject);
     }
 }
