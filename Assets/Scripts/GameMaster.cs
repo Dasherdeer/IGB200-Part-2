@@ -34,7 +34,7 @@ public class GameMaster : MonoBehaviour {
     void Update() {
 
         if (Input.GetKeyDown(KeyCode.C)||Input.GetKey(KeyCode.Period)|| EnergyManager.GetComponent<EnergyManager>().getEnergy() <= 0f) {
-            AudioSource.PlayClipAtPoint(SwitchWorlds, GameObject.FindGameObjectWithTag("Player").transform.position);
+            //AudioSource.PlayClipAtPoint(SwitchWorlds, GameObject.FindGameObjectWithTag("Player").transform.position);
             particleWorld = !particleWorld;
         }
 

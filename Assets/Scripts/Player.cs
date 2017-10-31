@@ -101,13 +101,24 @@ public class Player : MonoBehaviour {
         }
 
         //jump
-        if ((Input.GetAxisRaw("Vertical") > 0  || Input.GetKeyDown(KeyCode.Space)) && kyoteTime && JumpTimer <= JumpTime && grounded) {
-            //Play sound
-            AudioSource.PlayClipAtPoint(JumpSound, transform.position);
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && grounded) {
             Jump();
-            JumpTimer = JumpTime + 0.7f;
-            JumpTimer = JumpTime + 0.5f;
         }
+
+        //double jump
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) && !doubleJumped && !grounded) {
+            Jump();
+            doubleJumped = true;
+        }
+
+        //jump
+        //if ((Input.GetAxisRaw("Vertical") > 0  || Input.GetKeyDown(KeyCode.Space)) || Input.GetKeyDown(KeyCode.Space) && kyoteTime && JumpTimer <= JumpTime && grounded) {
+        //Play sound
+        //     AudioSource.PlayClipAtPoint(JumpSound, transform.position);
+        //    Jump();
+        //     JumpTimer = JumpTime + 0.7f;
+        //     JumpTimer = JumpTime + 0.5f;
+        // }
 
         //if (Input.GetKey(KeyCode.Q))
         //{
@@ -119,27 +130,32 @@ public class Player : MonoBehaviour {
         //{
         //    wallJump();
         //    WallJumped = true;
-        //}
-        JumpTime = Time.time;
+        //}d
+        //JumpTime = Time.time;
 
         //double jump
-        if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && !doubleJumped && !grounded && !GameMaster.particleWorld) {
-            AudioSource.PlayClipAtPoint(JumpSound, transform.position);
-            doubleJump();
-            doubleJumped = true;
-        }
+        // if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) || Input.GetKeyDown(KeyCode.Space) && !doubleJumped && !grounded && !GameMaster.particleWorld) {
+        //     AudioSource.PlayClipAtPoint(JumpSound, transform.position);
+        //     doubleJump();
+        //     doubleJumped = true;
+        //  }
 
-        moveVelocity = 0f;
+         moveVelocity = 0f;
 
         //walking
-        if (Input.GetAxis("Horizontal") != 0) {
-            moveVelocity = (Input.GetAxis("Horizontal")) * moveSpeed;
+        //if (Input.GetAxis("Horizontal") != 0) {
+        //   moveVelocity = (Input.GetAxis("Horizontal")) * moveSpeed;
+        //}
+
+        //walk right
+        if (Input.GetKey(KeyCode.D)) {
+            moveVelocity = moveSpeed;
         }
 
-        ////walk left
-        //if (Input.GetKey(KeyCode.A)) {
-        //    moveVelocity = -moveSpeed;
-        //}
+        //walk left
+        if (Input.GetKey(KeyCode.A)) {
+            moveVelocity = -moveSpeed;
+        }
 
         rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
 

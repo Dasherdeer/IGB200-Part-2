@@ -63,10 +63,12 @@ public class StunIndicator : MonoBehaviour {
 
             sIPLerpedColor = sIP.GetComponent<StunIndicatorPlayer>().lerpedColor; 
             if (sIPLerpedColor.r <= redMax && sIPLerpedColor.r >= redMin && sIPLerpedColor.g <= greenMax && sIPLerpedColor.g >= greenMin) {
+                Debug.Log("Stun Success");
                 stunEnemy = true;
                 stunFailed = false;
                 LevelLoader.enemiesStunned += 1;
                } else {
+                Debug.Log("Stun Failed");
                 stunEnemy = false;
                 stunFailed = true;
             }
