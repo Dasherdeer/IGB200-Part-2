@@ -25,6 +25,8 @@ public class Enemy2 : MonoBehaviour {
     private float damageToPlayerTime;
     public Collider thisCollider;
 
+    public int EnemyNumber; //for debugging
+
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -71,6 +73,13 @@ public class Enemy2 : MonoBehaviour {
                 HealthManager.DamagePlayer(damageToGive);
                 damageToPlayerTime = Time.time + damageToPlayerRate;
             }
+        }
+
+
+        //for debugging
+        if (si == null)
+        {
+            Debug.Log("Enemy number " + EnemyNumber + " is fucking it up for everyone");
         }
     }
 
